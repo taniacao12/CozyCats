@@ -1,4 +1,4 @@
-## Dequeue
+## Deque
 Created by: CozyCats (Tania Cao, Frank Chen, Puneet Johal)
 
 ### To-Do List
@@ -8,7 +8,7 @@ Created by: CozyCats (Tania Cao, Frank Chen, Puneet Johal)
 4. Repeat step 3 and 4 until there are no problems in the code
 
 ### Development Plan
-1. Look in API to learn what dequeue does and how it functions
+1. Look in API to learn what deque does and how it functions
 2. Add basic methods to add, remove, and peek at either end of the deque to the Deque interface
 3. Implement addFirst, removeFirst, and getFirst in QQKachoo to ensure you can add, remove, and peek at one end. **Test**. These methods give the deque the FILO property.
 4. Implement addLast, removeLast, and getLast to ensure you can add, remove, and peek at the other end. **Test**. The deque can now be used both as a FIFO and FILO data structure now.
