@@ -1,47 +1,68 @@
 public class QQKachoo<T> implements Deque<T> {
     // Instance Variables
     private DLLNode<D> _front, _end;
-	
+    private int _size, _maxSize;
+    	
     // Default Constructor
-    public QQKachoo() {
+    public QQKachoo()
+    {
 	_front = null;
 	_end = null;
+	_size = 0;
+    }
+
+    //Overloaded Constructor for Limited Capacity Deque
+    public QQKachoo(int max){
+	this();
+	_maxSize = max;
     }
 	
-    // Check if empty
-    public boolean isEmpty() {
-	if (_front == null)
-	    return true;
-	return false;
+    // Check If Empty
+    public boolean isEmpty()
+    {
+        return _size == 0;
     }
     
-    // Add the the front
-    public void addFirst (T x) {
-	if (_front == null) {
-	    DLLNode<T> node = new DLLNode(x, null);
-	    _front = node;
-	    _end = node;
+    // Add Front
+    public void addFirst( T x )
+    {
+	if (_size == _maxSize){
+	    throw new IllegalStateException();
 	}
-	else {
-	    DLLNode<T> node = new DLLNode(x, _front);
-	    _front.setPrev(node);
-	    _front = node;
-	}
+	if( _front == null )
+	    {
+		DLLNode<T> node = new DLLNode( x, null );
+		_front = node;
+		_end = node;
+	    }
+	else
+	    {
+		DLLNode<T> node = new DLLNode( x, _front );
+		_front.setPrev( node );
+		_front = node;
+	    }
+	_size++;
     }
-    
-    // Add to the end
-    public void addLast (T x) {
-	if (_front == null) {
-	    DLLNode<T> node = new DLLNode(x, null);
-	    _front = node;
-	    _end = node;
+	
+    // Add End
+    public void addLast( T x )
+    {
+	if (_size == _maxSize){
+	    throw new IllegalStateException();
 	}
-	else {
-	    DLLNode<T> node = new DLLNode(x, null);
-	    _end.setNext(node);
-	    node.setPrev(_end);
-	    _end = node;
-	}
+	if( _front == null )
+	    {
+		DLLNode<T> node = new DLLNode( x, null );
+		_front = node;
+		_end = node;
+	    }
+	else
+	    {
+		DLLNode<T> node = new DLLNode( x, null );
+		_end.setNext( node );
+		node.setPrev( _end );
+		_end = node;
+	    }
     }
 	
     // 
