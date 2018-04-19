@@ -4,73 +4,64 @@ public class QQKachoo<T> implements Deque<T> {
     private int _size, _maxSize;
     	
     // Default Constructor
-    public QQKachoo()
-    {
+    public QQKachoo() {
 	_front = null;
 	_end = null;
 	_size = 0;
     }
 
-    //Overloaded Constructor for Limited Capacity Deque
-    public QQKachoo(int max){
+    // Overloaded Constructor for Limited Capacity Deque
+    public QQKachoo (int max) {
 	this();
 	_maxSize = max;
     }
 	
     // Check If Empty
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return _size == 0;
     }
     
     // Add Front
-    public void addFirst( T x )
-    {
-	if (_size == _maxSize){
+    public void addFirst (T x) {
+	if (_size == _maxSize)
 	    throw new IllegalStateException();
+	if (_front == null) {
+	    DLLNode<T> node = new DLLNode(x, null);
+	    _front = node;
+	    _end = node;
 	}
-	if( _front == null )
-	    {
-		DLLNode<T> node = new DLLNode( x, null );
-		_front = node;
-		_end = node;
-	    }
-	else
-	    {
-		DLLNode<T> node = new DLLNode( x, _front );
-		_front.setPrev( node );
-		_front = node;
-	    }
+	else {
+	    DLLNode<T> node = new DLLNode(x, _front);
+	    _front.setPrev(node);
+	    _front = node;
+	}
 	_size++;
     }
 	
     // Add End
-    public void addLast( T x )
-    {
+    public void addLast (T x) {
 	if (_size == _maxSize){
 	    throw new IllegalStateException();
 	}
-	if( _front == null )
-	    {
-		DLLNode<T> node = new DLLNode( x, null );
-		_front = node;
-		_end = node;
-	    }
-	else
-	    {
-		DLLNode<T> node = new DLLNode( x, null );
-		_end.setNext( node );
-		node.setPrev( _end );
-		_end = node;
-	    }
+	if (_front == null) {
+	    DLLNode<T> node = new DLLNode(x, null);
+	    _front = node;
+	    _end = node;
+	}
+	else {
+	    DLLNode<T> node = new DLLNode(x, null);
+	    _end.setNext(node);
+	    node.setPrev(_end);
+	    _end = node;
+	}
     }
 	
-    // 
+    // Remove and return the first element
     public boolean offerFirst (T x) {
 	return false;
     }
     
-    // 
+    // Remove and return the last element
     public boolean offerLast (T x) {
 	return false;	
     }
@@ -99,7 +90,7 @@ public class QQKachoo<T> implements Deque<T> {
 	return temp;
     }
 
-    // 
+    // return 
     public T pollFirst() {
 		
     }
@@ -109,12 +100,12 @@ public class QQKachoo<T> implements Deque<T> {
 		
     }
 
-    // 
+    // return first element
     public T getFirst() {
 		
     }
 
-    // 
+    // return last element
     public T getLast() {
 		
     }
