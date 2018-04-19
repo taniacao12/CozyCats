@@ -3,9 +3,12 @@ Created by: CozyCats (Tania Cao, Frank Chen, Puneet Johal)
 
 ### To-Do List
 1. Write QQKachoo.java
+   1. Copy over methods from interface
+   2. Write addFirst/Last, removeFirst/Last, and getFirst/Last
+   3. Write offerFirst/Last, pollFirst/Last, and peekFirst/Last
 2. Test QQKachoo.java
 3. Fix any errors
-4. Repeat step 3 and 4 until there are no problems in the code
+4. Repeat step 2 and 3 until there are no problems in the code
 
 ### Development Plan
 1. Look in API to learn what deque does and how it functions
