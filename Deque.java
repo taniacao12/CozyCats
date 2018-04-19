@@ -20,8 +20,6 @@ public interface Deque<T>{
     //retrieves, but does not remove, last element
     public T getLast();
 
-
-
     //---------- Methods that return a special value if they fail ----------
 
     //adds to the front of the deque
