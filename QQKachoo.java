@@ -1,7 +1,9 @@
+import java.util.NoSuchElementException;
+
 public class QQKachoo<T> implements Deque<T> {
 
     // Instance Variables
-    private DLLNode<D> _front, _end;
+    private DLLNode<T> _front, _end;
     private int _size, _maxSize;
     
     	
@@ -13,20 +15,33 @@ public class QQKachoo<T> implements Deque<T> {
 	_size = 0;
     }
 
-    //overloaded constructor for limited capacity deque
+    // Overloaded Constructor for Limited Capacity Deque
     public QQKachoo(int max){
 	this();
 	_maxSize = max;
     }
-    
 	
-    //interface methods
+	// Overwritten toString
+	public String toString() {
+		String retStr = "";
+		DLLNode<T> iter = _front;
+		while( iter != null ) {
+			if( iter.getCargo() != null ) {
+				retStr += iter.getCargo() + " ";
+			}
+			iter = iter.getNext();
+		}
+		return retStr;
+	}
+	
+    // Interface Methods
     
-    //adds to the front of the deque
+    // Adds to the Front of the Deque
     public void addFirst(T x)
     {
-	if (_size == _maxSize){
-	    throw new IllegalStateException();
+	try { _size = _maxSize; }
+	catch ( IllegalStateException e ) {
+		System.out.println( "Error: Exceeding Capacity! " );
 	}
 	if( _front == null )
 	    {
@@ -43,11 +58,12 @@ public class QQKachoo<T> implements Deque<T> {
 	_size++;
     }
 	
-    //adds to the end of the deque
+    // Adds to the End of the Deque
     public void addLast(T x)
     {
-	if (_size == _maxSize){
-	    throw new IllegalStateException();
+	try { _size = _maxSize; }
+	catch ( IllegalStateException e ) {
+		System.out.println( "Error: Exceeding Capacity! " );
 	}
 	if( _front == null )
 	    {
@@ -65,10 +81,12 @@ public class QQKachoo<T> implements Deque<T> {
 	_size++;
     }
 
-    //removes first element
+    // Removes First Element
     public T removeFirst() {
-	if (this.isEmpty())
-	    throw new NoSuchElementException;
+	try { this.isEmpty(); }
+	catch ( NoSuchElementException e ) {
+		System.out.println( "Error: No Element Found! " );
+	}
 	T temp = (T) getFirst();
 	_front = _front.getNext();
 	_front.setPrev(null);
@@ -76,10 +94,12 @@ public class QQKachoo<T> implements Deque<T> {
 	return temp;
     }
 
-    //removes last element
+    // Removes Last Element
     public T removeLast() {
-	if (this.isEmpty())
-	    throw new NoSuchElementException;
+	try { this.isEmpty(); }
+	catch ( NoSuchElementException e ) {
+		System.out.println( "Error: No Element Found! " );
+	}
 	T temp =  (T) getLast();
 	if (_front.equals(_end))
 	    _front = _end = null;
@@ -91,28 +111,34 @@ public class QQKachoo<T> implements Deque<T> {
 	return temp;
     }
 
-    //retrieves, but does not remove, first element
+    // Retrieves, but Does not Remove, First Element
     public T getFirst(){
-	if (this.isEmpty()) {throw new NoSuchElementException;}
+	try { this.isEmpty(); }
+	catch ( NoSuchElementException e ) {
+		System.out.println( "Error: No Element Found! " );
+	}
 	return _front.getCargo();
     }
 
-    //retrieves, but does not remove, last element
+    // Retrieves, but Does not Remove, Last Element
     public T getLast(){
-	if (this.isEmpty()); {throw new NoSuchElementexception;}
+	try { this.isEmpty(); }
+	catch ( NoSuchElementException e ) {
+		System.out.println( "Error: No Element Found! " );
+	}
 	return _end.getCargo();
     }
 	
-    //adds to the front of the deque
-    //(used with capacit-restricted deques)
+    // Adds to the Front of the Deque
+    // (used with capacit-restricted deques)
     public boolean offerFirst (T x) {
 	if (_size >= _maxSize) {return false;}
 	this.addFirst(x);
 	return true;
     }
     
-    //adds to the end of the deque
-    //(used with capacity-restricted deques)
+    // Adds to the End of the Deque
+    // (used with capacity-restricted deques)
     public boolean offerLast (T x) {
 	if (_size >= _maxSize) {return false;}
 	this.addLast(x);
@@ -120,26 +146,26 @@ public class QQKachoo<T> implements Deque<T> {
     }
 	
 
-    //removes first element
+    //Removes First Element
     public T pollFirst() {
 	if (this.isEmpty()) {return null;}
 	return this.removeFirst();
     }
 
-    //removes last element
+    //Removes Last Element
     public T pollLast() {
-	if (this.isEmpty()); {return null;}
-	reurn this.removeLast();
+	if (this.isEmpty()) {return null;}
+	return this.removeLast();
     }
 
-    //retrieves, but does not remove, first element
+    //Retrieves, but Does not Remove, First Element
     public T peekFirst() {
 	if (!this.isEmpty())
 	    return (T) _front.toString();
 	return null;
     }
 
-    //retrieves, but does not remove, first element
+    //Retrieves, but Does not Remove, Last element
     public T peekLast() {
 	if (!this.isEmpty())
 	    return (T) _end.toString();
@@ -152,9 +178,14 @@ public class QQKachoo<T> implements Deque<T> {
         return _size == 0;
     }
 	
-    // main
+    // Main Method
     public static void main (String[] args) {
-		
+		QQKachoo<String> test = new QQKachoo();
+		test.addFirst( "computer" );
+		test.offerFirst( "hello" );
+		test.addLast( "cozy" );
+		test.offerLast( "cats" );
+		System.out.println( test );
     } // end main
 	
 } // end class
