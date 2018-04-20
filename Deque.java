@@ -24,17 +24,17 @@ public interface Deque<T>{
 
     //adds to the front of the deque
     //(used with capacit-restricted deques)
-    public void offerFirst(T x);
+    public boolean offerFirst(T x);
 
     //adds to the end of the deque
     //(used with capacity-restricted deques)
-    public void offerLast(T x);
+    public boolean offerLast(T x);
 
     //removes first element
     public T pollFirst();
 
     //removes last element
-    public T pollLast();
+    public T pollLast(); 
 
     //retrieves, but does not remove, first element
     public T peekFirst();
