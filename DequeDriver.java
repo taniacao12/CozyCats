@@ -22,7 +22,7 @@ __---~~~~--__                      __--~~~~---__
  |>>>>>>||                            ||<<<<<<|
 */
 
-public class DequeDriver_FC{
+public class DequeDriver{
   public static void main(String[] args) {
     QQKachoo<String> iscream = new QQKachoo<String>();
 
