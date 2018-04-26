@@ -180,7 +180,7 @@ public class QQKachoo<T> implements Deque<T> {
     // Check If Empty (helper)
     public boolean isEmpty()
     {
-        return _size == 0;
+        return (this.size() == 0);
     }
 
     // Main Method
