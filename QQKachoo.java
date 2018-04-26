@@ -5,8 +5,8 @@ public class QQKachoo<T> implements Deque<T> {
     // Instance Variables
     private DLLNode<T> _front, _end;
     private int _size, _maxSize;
-    
-    	
+
+
     // Default Constructor
     public QQKachoo()
     {
@@ -20,7 +20,7 @@ public class QQKachoo<T> implements Deque<T> {
 	this();
 	_maxSize = max;
     }
-	
+
 	// Overwritten toString
 	public String toString() {
 		String retStr = "";
@@ -33,9 +33,14 @@ public class QQKachoo<T> implements Deque<T> {
 		}
 		return retStr;
 	}
-	
+
+  // Accessor for Size
+  public int size(){
+    return _size;
+  }
+
     // Interface Methods
-    
+
     // Adds to the Front of the Deque
     public void addFirst(T x)
     {
@@ -57,7 +62,7 @@ public class QQKachoo<T> implements Deque<T> {
 	    }
 	_size++;
     }
-	
+
     // Adds to the End of the Deque
     public void addLast(T x)
     {
@@ -128,7 +133,7 @@ public class QQKachoo<T> implements Deque<T> {
 	}
 	return _end.getCargo();
     }
-	
+
     // Adds to the Front of the Deque
     // (used with capacit-restricted deques)
     public boolean offerFirst (T x) {
@@ -136,7 +141,7 @@ public class QQKachoo<T> implements Deque<T> {
 	this.addFirst(x);
 	return true;
     }
-    
+
     // Adds to the End of the Deque
     // (used with capacity-restricted deques)
     public boolean offerLast (T x) {
@@ -144,7 +149,7 @@ public class QQKachoo<T> implements Deque<T> {
 	this.addLast(x);
 	return true;
     }
-	
+
 
     //Removes First Element
     public T pollFirst() {
@@ -177,7 +182,7 @@ public class QQKachoo<T> implements Deque<T> {
     {
         return _size == 0;
     }
-	
+
     // Main Method
     public static void main (String[] args) {
 		QQKachoo<String> test = new QQKachoo();
@@ -187,5 +192,5 @@ public class QQKachoo<T> implements Deque<T> {
 		test.offerLast( "cats" );
 		System.out.println( test );
     } // end main
-	
+
 } // end class

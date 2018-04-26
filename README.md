@@ -21,4 +21,4 @@ Created by: CozyCats (Tania Cao, Frank Chen, Puneet Johal)
 
 
 ### Method Selection
-For our Deque, we decided to use a (doubly-linked) node-based architecture. This is because it is easier and faster to access both ends of the deque, since there are pointers to both head and tail.
+For our Deque, we decided to use a (doubly-linked) node-based architecture. This is because it is easier and faster to access both ends of the deque, since there are pointers to both head and tail, which makes the runtime of adding, removing, or peeking constant.
